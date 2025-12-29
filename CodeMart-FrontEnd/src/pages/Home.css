@@ -1,0 +1,446 @@
+body {
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+h1,
+h2 {
+  font-weight: 400;
+  max-width: none;
+}
+
+.gradient-animate {
+  animation: hueRotate 12s linear infinite;
+}
+
+@keyframes hueRotate {
+  from {
+    filter: hue-rotate(0deg);
+  }
+
+  to {
+    filter: hue-rotate(360deg);
+  }
+}
+
+/* Logo scroll animation */
+.logo-scroll-container {
+  animation: scrollLeft 20s linear infinite;
+}
+
+@keyframes scrollLeft {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.techslider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  min-height: 42vh;
+  overflow: hidden;
+  font-family: "Oswald", sans-serif;
+}
+
+.ticker {
+  padding: 1vw;
+  white-space: nowrap;
+}
+
+.ticker:first-child {
+  background-color: #C6B3FF;
+  transform: rotateZ(-2deg);
+  scale: 1.1;
+}
+
+.ticker:last-child {
+  background-color: #1f1f1f;
+  transform: rotateZ(2deg);
+  scale: 1.1;
+}
+
+.ticker-wrap {
+  display: flex;
+  gap: 40px;
+}
+
+.ticker-text {
+  color: #000;
+  font-size: clamp(40px, 4.375vw, 70px);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.ticker:last-child .ticker-text {
+  color: #fff;
+}
+
+.accent {
+  color: #0000008f;
+  font-family: "Caveat", cursive;
+  font-weight: 400;
+  font-size: 1.1em;
+}
+
+.ticker:last-child .accent {
+  color: #C6B3FF;
+}
+
+.comparisonSection {
+  position: relative;
+  padding-bottom: 75.25%;
+}
+
+.comparisonImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.afterImage {
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  transform: translate(100%, 0px);
+}
+
+.afterImage img {
+  transform: translate(-100%, 0px);
+}
+
+.comparisonImage img {
+  width: 100%;
+  height: 86%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+}
+
+.panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 90vh;
+}
+
+/* Hover gradient glow wrapper for image comparison sections */
+.glow-hover {
+  position: relative;
+  border-radius: 16px;
+  z-index: 0;
+  /* establish stacking context */
+}
+
+.glow-hover::before {
+  content: "";
+  position: absolute;
+  inset: -8px;
+  border-radius: inherit;
+  background: conic-gradient(from 0deg, #6366f1, #a855f7, #f97316, #22d3ee, #6366f1);
+  filter: blur(24px);
+  opacity: 0;
+  transition: opacity 250ms ease, transform 250ms ease;
+  z-index: -1;
+  /* render behind content */
+  pointer-events: none;
+}
+
+.glow-hover:hover::before {
+  opacity: 0.75;
+  transform: scale(1.02);
+}
+
+/* Ensure the content stays above the glow */
+.glow-hover>* {
+  position: relative;
+  z-index: 1;
+}
+
+.about-title {
+  font-size: 7.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: absolute;
+  top: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+  background: linear-gradient(to bottom,
+      rgb(8 42 123 / 35%) 30%,
+      rgb(255 255 255 / 0%) 76%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  z-index: 1;
+}
+
+/* Modified version for featured projects section */
+.featured-projects-title {
+  font-size: 5.5rem;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 0 auto -30px auto;
+  pointer-events: none;
+  white-space: nowrap;
+  font-family: "Arial Black", "Arial Bold", Arial, sans-serif;
+  background: linear-gradient(to bottom,
+      rgb(8 42 123 / 35%) 40%,
+      rgb(255 255 255 / 0%) 76%);
+  /* background: #08244B; */
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-align: center;
+}
+
+/* Preloader Styles - Add these to your Home.css */
+
+.preloader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #e6e0d8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.preloader-overlay-content {
+  width: 40%;
+}
+
+.preloader-images {
+  position: relative;
+  height: 550px;
+}
+
+.preloader-img-holder {
+  position: relative;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+  z-index: 2;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.preloader-img-holder img {
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preloader-text {
+  position: relative;
+  margin: 1em 0;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.preloader-counter,
+.preloader-logo p {
+  font-size: 200px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.preloader-counter p {
+  line-height: 100%;
+}
+
+.preloader-counter p span,
+.preloader-logo p span {
+  position: relative;
+  z-index: -2;
+  color: #000000;
+}
+
+.preloader-logo {
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.preloader-logo p {
+  line-height: 100%;
+  font-size: 100px;
+}
+
+.preloader-logo p span {
+  position: relative;
+  top: 200px;
+}
+
+.preloader-nav {
+  position: fixed;
+  top: -200px;
+  width: 100%;
+  padding: 1em;
+  background-color: #e6e0d8;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.preloader-nav>div {
+  flex: 1;
+}
+
+.preloader-nav a,
+.preloader-nav p {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #000;
+  font-weight: 500;
+}
+
+.preloader-nav-logo a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #000;
+  font-weight: 500;
+}
+
+.preloader-menu {
+  display: flex;
+  justify-content: center;
+}
+
+.preloader-shop {
+  display: flex;
+  justify-content: flex-end;
+  gap: 2em;
+}
+
+.preloader-shop a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #000;
+  font-weight: 500;
+}
+
+.preloader-hero {
+  width: 100vw;
+  height: 100vh;
+}
+
+.preloader-hero img {
+  transform: scale(2);
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.preloader-hero-copy {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-transform: uppercase;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.preloader-hero-copy h1 {
+  font-weight: 400;
+  font-size: 10vw;
+  color: #e6e0d8;
+  line-height: 100%;
+}
+
+.preloader-hero-copy h1 span {
+  position: relative;
+  top: 30vw;
+}
+
+@media(max-width: 900px) {
+  .preloader-overlay-content {
+    width: 75%;
+  }
+
+  .preloader-counter,
+  .preloader-logo p {
+    font-size: 100px;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .about-title {
+    font-size: 4.5rem;
+  }
+
+  .featured-projects-title {
+    font-size: 4.5rem;
+  }
+}
+
+/* Gradient card effect */
+.gradient-card {
+  position: relative;
+  border-radius: 0.75rem;
+  /* matches rounded-2xl */
+  overflow: visible;
+}
+
+/* Ensure inner content stays above pseudo-element */
+.gradient-card>* {
+  position: relative;
+  z-index: 1;
+}
+
+.gradient-card::before {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  /* thickness of the shadow/border */
+  border-radius: inherit;
+  background: conic-gradient(from 0deg,
+      #064393,
+      #063093,
+      /* purple */
+      #450693,
+      /* orange */
+      #850693,
+      /* teal */
+      #450693,
+      /* back to purple */
+      #064393);
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gradient-card:hover::before {
+  opacity: 0.5;
+}
+
+/* Active glow effect for timeline cards in view */
+.active-glow::before {
+  opacity: 0.5 !important;
+}

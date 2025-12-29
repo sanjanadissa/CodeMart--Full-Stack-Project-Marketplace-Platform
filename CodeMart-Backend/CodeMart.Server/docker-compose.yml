@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: codemart-api
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://+:8080
+      - DB_CONNECTION_STRING=${DB_CONNECTION_STRING}
+      - JWT_KEY=${JWT_KEY:-YourSuperSecretKeyThatShouldBeAtLeast32CharactersLongForHS256Algorithm}
+      - JWT_ISSUER=${JWT_ISSUER:-CodeMart.Server}
+      - JWT_AUDIENCE=${JWT_AUDIENCE:-CodeMart.Client}
+      - JWT_ACCESS_TOKEN_EXPIRATION_MINUTES=${JWT_ACCESS_TOKEN_EXPIRATION_MINUTES:-60}
+      - SUPABASE_PROJECT_URL=${SUPABASE_PROJECT_URL}
+      - SUPABASE_API_KEY=${SUPABASE_API_KEY}
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+      - 1.1.1.1
+    restart: unless-stopped
